@@ -1,16 +1,17 @@
 package main
 
 import (
-	//"fmt"
+	"fmt"
 	"encoding/base64"
-	"image"
-	"os"
+	//"image"
+	//"os"
 	//"io/ioutil"
-	"log"
+	//"log"
 	_ "image/jpeg"
 	//"net/http"
 	//"strings"
-	"image/color"
+	//"image/color"
+	//"strconv"
 )
 
 func toBase64(b []byte) string {
@@ -23,23 +24,8 @@ func check(err error) {
 	}  
 }
 
-func main() {
-	/* msg := "Hello, 世界"
-	encoded := base64.StdEncoding.EncodeToString([]byte(msg))
-	fmt.Println(encoded)
-	decoded, err := base64.StdEncoding.DecodeString(encoded)
-	if err != nil {
-		fmt.Println("decode error:", err)
-		return
-	}
-	fmt.Println(string(decoded)) */
-		// Read the entire file into a byte slice
-
-
-
-
-		
-	/* bytes, err := ioutil.ReadFile("./TestImage.jpg")
+/* func convertToBase64(image string) string {
+	bytes, err := ioutil.ReadFile("./TestImage.jpg")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -62,12 +48,27 @@ func main() {
 	base64Encoding += toBase64(bytes)
 
 	// Print the full base64 representation of the image
-	//fmt.Println(base64Encoding)	 */
+	fmt.Println(base64Encoding)	
+} */
 
+/* func decodeToImg(image string) string {
+
+	msg := "Hello, 世界"
+	encoded := base64.StdEncoding.EncodeToString([]byte(msg))
+	fmt.Println(encoded)
+	decoded, err := base64.StdEncoding.DecodeString(encoded)
+	if err != nil {
+		fmt.Println("decode error:", err)
+		return
+	}
+	fmt.Println(string(decoded))
 	
+	
+	// Read the entire file into a byte slice
+} */
 
-
-	//Opens Image and creates blank rectangle to create output image
+/* func encodedImage(image string) string {
+//Opens Image and creates blank rectangle to create output image
 	reader, err := os.Open("./TestImage.jpg")
 	if err != nil {
 		log.Fatal(err)
@@ -102,4 +103,22 @@ func main() {
             wImg.Set(x, y, c) 
         } 
     } 
+} */
+
+func msgToASCII(msgText string) string {
+	var encryptedMsg string
+
+	for pos, char := range msgText {
+		fmt.Println("rune", pos, char)
+		binaryChar := int64(char)
+		s := fmt.Sprintf("%09b", binaryChar)
+		encryptedMsg += s
+	}
+
+	fmt.Println("final", encryptedMsg)
+	return "test"
+}
+
+func main() {
+	msgToASCII("HII")
 }
